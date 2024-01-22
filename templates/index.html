@@ -21,7 +21,9 @@
       <!-- fonts -->
       <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
 
-      
+      <!-- Example for linking Bootstrap CSS in your HTML file -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="...">
+
       <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
       <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext" rel="stylesheet">
       <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
@@ -178,45 +180,46 @@
                      <h1 class="fashion_taital">Fashion</h1>
                      <div class="fashion_section_2">
                      <div class="row">
+                        {% for product in fashion_products %}
                         <div class="col-lg-4 col-sm-4">
                            <div class="box_main">
-                              
-                              <h4 class="shirt_text">Formal Shirt</h4>
-                              <p class="price_text">Price <span style="color: #262626;">LKR. 2500</span></p>
-                              
-                              <div class="tshirt_img"><img src="{{ url_for('static', filename="images/dress-shirt-img.png") }}" alt=""/></div>
+                              <h4 class="shirt_text">{{ product.name }}</h4>
+                              <p class="price_text">Price <span style="color: #262626;">LKR. {{ product.price }}</span></p>
+                              <div class="tshirt_img"><img src="{{ url_for('static', filename='images/' + product.image) }}" alt=""/></div>
                               <div class="btn_main">
-                                 <div class="buy_bt"><a href="buy.html">Buy Now</a></div>
-                                 <div class="seemore_bt"><a href="fashion.html">See More</a></div>
+                                 <div class="buy_bt"><a href="{{ url_for('buy_product', product_id=product.id) }}">Buy Now</a></div>
+                                 <div class="seemore_bt"><a href="{{ url_for('view_product', product_id=product.id) }}">See More</a></div>
                               </div>
                            </div>
                         </div>
-
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 
-                                 <h4 class="shirt_text">Formal Shirt</h4>
-                                 <p class="price_text">Price <span style="color: #262626;">LKR. 2500</span></p>
-                                 
-                                 <div class="tshirt_img"><img src="{{ url_for('static', filename="images/dress-shirt-img.png") }}" alt=""/></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="buy.html">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="fashion.html">See More</a></div>
-                                 </div>
+                        {% endfor %}
+                        {% for product in fashion_products %}
+                        <div class="col-lg-4 col-sm-4">
+                           <div class="box_main">
+                              <h4 class="shirt_text">{{ product.name }}</h4>
+                              <p class="price_text">Price <span style="color: #262626;">LKR. {{ product.price }}</span></p>
+                              <div class="tshirt_img"><img src="{{ url_for('static', filename='images/' + product.image) }}" alt=""/></div>
+                              <div class="btn_main">
+                                 <div class="buy_bt"><a href="{{ url_for('buy_product', product_id=product.id) }}">Buy Now</a></div>
+                                 <div class="seemore_bt"><a href="{{ url_for('view_product', product_id=product.id) }}">See More</a></div>
                               </div>
                            </div>
+                        </div>
+                        {% endfor %}
                            
-                           <div class="col-lg-4 col-sm-4">
-                              <div class="box_main">
-                                 <h4 class="shirt_text">Women Frock</h4>
-                                 <p class="price_text">Price  <span style="color: #262626;">LKR. 3400</span></p>
-                                 <div class="tshirt_img"><img src="{{ url_for('static', filename="images/women-clothes-img.png") }}"></div>
-                                 <div class="btn_main">
-                                    <div class="buy_bt"><a href="buy.html">Buy Now</a></div>
-                                    <div class="seemore_bt"><a href="women.html">See More</a></div>
-                                 </div>
+                        {% for product in fashion_products %}
+                        <div class="col-lg-4 col-sm-4">
+                           <div class="box_main">
+                              <h4 class="shirt_text">{{ product.name }}</h4>
+                              <p class="price_text">Price <span style="color: #262626;">LKR. {{ product.price }}</span></p>
+                              <div class="tshirt_img"><img src="{{ url_for('static', filename='images/' + product.image) }}" alt=""/></div>
+                              <div class="btn_main">
+                                 <div class="buy_bt"><a href="{{ url_for('buy_product', product_id=product.id) }}">Buy Now</a></div>
+                                 <div class="seemore_bt"><a href="{{ url_for('view_product', product_id=product.id) }}">See More</a></div>
                               </div>
                            </div>
+                        </div>
+                        {% endfor %}
                         </div>
                      </div>
                   </div>
